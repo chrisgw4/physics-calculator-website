@@ -108,13 +108,13 @@ function checkAccelerationTwo() {
     let answerBox = document.querySelector("#accel-two-answer")
     let answerBegin = document.querySelector("#accel-two-equation-beginning")
 
-    let valueDict = { "time-two": 0, "accel-two": 0, "vel-init-two": 0, "pos-final-two": 0, "pos-init-two": 0 }
+    let valueDict = { "time": 0, "accel": 0, "vel-init": 0, "pos-final": 0, "pos-init": 0 }
 
 
     let equations = document.querySelectorAll(".constant-accel-two")
 
     // keeps track of which variable relates to which equation index
-    let equationDict = { "pos-final-two": 0, "pos-init-two": 1, "vel-init-two": 2, "accel-two": 3, "time-two": 4 }
+    let equationDict = { "pos-final": 0, "pos-init": 1, "vel-init": 2, "accel": 3, "time": 4 }
 
     // sets the equations styles back to normal
     resetEquations(equations)
@@ -146,40 +146,40 @@ function checkAccelerationTwo() {
     }
 
     // if the var to find is time
-    if (missingVar == "time-two") {
+    if (missingVar == "time") {
         // sqrt((xf - x0 - v0t)/(1/2*a)) = t
-        answerBox.innerHTML = Math.sqrt((valueDict["pos-final-two"] - valueDict["pos-init-two"] - (valueDict["vel-init-two"] * valueDict["time-two"])) / (1 / 2 * valueDict["accel-two"])).toFixed(3) + " s"
+        answerBox.innerHTML = Math.sqrt((valueDict["pos-final"] - valueDict["pos-init"] - (valueDict["vel-init"] * valueDict["time"])) / (1 / 2 * valueDict["accel"])).toFixed(3) + " s"
         answerBegin.innerHTML = "Time is"
         styleCorrectEquation(equations[4])
     }
     // if the var to find is acceleration
-    else if (missingVar == "accel-two") {
+    else if (missingVar == "accel") {
         // (xf - x0 - v0t)/(1/2t^2) = a
-        answerBox.innerHTML = ((valueDict["pos-final-two"] - valueDict["pos-init-two"] - valueDict["vel-init-two"] * valueDict["time-two"]) / (1 / 2 * Math.pow(valueDict["time-two"], 2))).toFixed(3) + " m/s^2"
+        answerBox.innerHTML = ((valueDict["pos-final"] - valueDict["pos-init"] - valueDict["vel-init"] * valueDict["time"]) / (1 / 2 * Math.pow(valueDict["time"], 2))).toFixed(3) + " m/s^2"
         answerBegin.innerHTML = "Acceleration is"
         styleCorrectEquation(equations[3])
 
     }
     // if the var to find is initial velocity
-    else if (missingVar == "vel-init-two") {
+    else if (missingVar == "vel-init") {
         // (xf-x0-(1/2*a*t^2))/t = v0
-        answerBox.innerHTML = ((valueDict["pos-final-two"] - valueDict["pos-init-two"] - (1 / 2 * valueDict["accel-two"] * Math.pow(valueDict["time-two"], 2))) / valueDict["time-two"]).toFixed(2) + " m/s"
+        answerBox.innerHTML = ((valueDict["pos-final"] - valueDict["pos-init"] - (1 / 2 * valueDict["accel"] * Math.pow(valueDict["time"], 2))) / valueDict["time"]).toFixed(2) + " m/s"
         answerBegin.innerHTML = "Initial Velocity is"
         styleCorrectEquation(equations[2])
 
     }
     // if the var to find is final position
-    else if (missingVar == "pos-final-two") {
+    else if (missingVar == "pos-final") {
         // (x0 + v0*t + (1/2*a*t^2)) = xf
-        answerBox.innerHTML = ((valueDict["pos-init-two"] + valueDict["vel-init-two"] * valueDict["time-two"] + (1 / 2 * valueDict["accel-two"] * Math.pow(valueDict["time-two"], 2)))).toFixed(3) + " m"
+        answerBox.innerHTML = ((valueDict["pos-init"] + valueDict["vel-init"] * valueDict["time"] + (1 / 2 * valueDict["accel"] * Math.pow(valueDict["time"], 2)))).toFixed(3) + " m"
         answerBegin.innerHTML = "Final Position is"
         styleCorrectEquation(equations[0])
 
     }
     // if the var to find is initial position
-    else if (missingVar == "pos-init-two") {
+    else if (missingVar == "pos-init") {
         // (xf-v0*t-(1/2*a*t^2)) = x0
-        answerBox.innerHTML = ((valueDict["pos-final-two"] - valueDict["vel-init-two"] * valueDict["time-two"] - (1 / 2 * valueDict["accel-two"] * Math.pow(valueDict["time-two"], 2)))).toFixed(3) + " m"
+        answerBox.innerHTML = ((valueDict["pos-final"] - valueDict["vel-init"] * valueDict["time"] - (1 / 2 * valueDict["accel"] * Math.pow(valueDict["time"], 2)))).toFixed(3) + " m"
         answerBegin.innerHTML = "Initial Position is"
         styleCorrectEquation(equations[1])
 
