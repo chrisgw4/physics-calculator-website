@@ -2,8 +2,29 @@ const accelOne = document.querySelectorAll(".accel-one")
 const accelTwo = document.querySelectorAll(".accel-two")
 const accelThree = document.querySelectorAll(".accel-three")
 
+// sec -> min -> hours -> days -> years
+const secDict = { "sec": 0 }
 
+// styles the correct equation
+function styleCorrectEquation(equation) {
+    equation.style.color = "#FF0000"
+    equation.style.fontSize = "30";
+}
 
+// resets the styles of the equations passed in to their original values
+function resetEquations(equations) {
+    for (e of equations) {
+        e.style.color = "#000000";
+        e.style.fontSize = "larger";
+        e.style.opacity = "1"
+    }
+}
+
+// the equations passed in will have its style made to show the equation is not being used
+function styleIncorrectEquation(equation) {
+    equation.style.fontSize = "x-small"
+    equation.style.opacity = "0.5"
+}
 
 function checkAccelerationOne() {
 
@@ -11,6 +32,15 @@ function checkAccelerationOne() {
     let answerBegin = document.querySelector("#accel-one-equation-beginning")
 
     let valueDict = { "time": 0, "accel": 0, "vel-init": 0, "vel-final": 0 }
+
+    let equations = document.querySelectorAll(".constant-accel-one")
+
+    // keeps track of which variable relates to which equation index
+    let equationDict = { "vel-final": 0, "vel-init": 1, "accel": 2, "time": 3 }
+
+    // sets the equations styles back to normal
+    resetEquations(equations)
+
 
     let numOfInputs = 0
     let missingVar = ""
@@ -24,11 +54,13 @@ function checkAccelerationOne() {
             if (input.name in valueDict) {
                 // sets the dictionary equivalent to the name to the input value
                 valueDict[input.name] = parseFloat(input.value)
-                document.getElementsByName(input.name)[0].style.color = "#FF0000";
+                    //document.getElementsByName(input.name)[0].style.color = "#2466f2";
 
-                //console.log(valueDict[input.name])
+                input.style.color = "#2466f2";
+                styleIncorrectEquation(equations[equationDict[input.name]])
+
             }
-            //console.log(parseFloat(input.value))
+
 
         } else {
             missingVar = input.name
@@ -43,18 +75,21 @@ function checkAccelerationOne() {
         // (vf - v0)/a = t
         answerBox.innerHTML = (Math.abs((valueDict["vel-final"] - valueDict["vel-init"]) / valueDict["accel"])).toFixed(3) + " s"
         answerBegin.innerHTML = "Time is"
+        styleCorrectEquation(equations[3])
     }
     // if the var to find is acceleration
     else if (missingVar == "accel") {
         // (vf - v0)/t = a
         answerBox.innerHTML = ((valueDict["vel-final"] - valueDict["vel-init"]) / valueDict["time"]).toFixed(3) + " m/s^2"
         answerBegin.innerHTML = "Acceleration is"
+        styleCorrectEquation(equations[2])
     }
     // if the var to find is initial velocity
     else if (missingVar == "vel-init") {
         // (vf - at) = v0
         answerBox.innerHTML = ((valueDict["vel-final"] - valueDict["accel"] * valueDict["time"])).toFixed(3) + " m/s"
         answerBegin.innerHTML = "Initial Velocity is"
+        styleCorrectEquation(equations[1])
 
     }
     // if the var to find is final velocity
@@ -62,6 +97,7 @@ function checkAccelerationOne() {
         // v0 + at = vf
         answerBox.innerHTML = ((valueDict["vel-init"] + valueDict["accel"] * valueDict["time"])).toFixed(3) + " m/s"
         answerBegin.innerHTML = "Final Velocity is"
+        styleCorrectEquation(equations[0])
     }
 }
 
@@ -73,6 +109,16 @@ function checkAccelerationTwo() {
     let answerBegin = document.querySelector("#accel-two-equation-beginning")
 
     let valueDict = { "time-two": 0, "accel-two": 0, "vel-init-two": 0, "pos-final-two": 0, "pos-init-two": 0 }
+
+
+    let equations = document.querySelectorAll(".constant-accel-two")
+
+    // keeps track of which variable relates to which equation index
+    let equationDict = { "pos-final-two": 0, "pos-init-two": 1, "vel-init-two": 2, "accel-two": 3, "time-two": 4 }
+
+    // sets the equations styles back to normal
+    resetEquations(equations)
+
 
     let numOfInputs = 0
     let missingVar = ""
@@ -86,7 +132,9 @@ function checkAccelerationTwo() {
             if (input.name in valueDict) {
                 // sets the dictionary equivalent to the name to the input value
                 valueDict[input.name] = parseFloat(input.value)
-                document.getElementsByName(input.name)[0].style.color = "#FF0000";
+                    //document.getElementsByName(input.name)[0].style.color = "#FF0000";
+                input.style.color = "#2466f2";
+                styleIncorrectEquation(equations[equationDict[input.name]])
             }
 
         } else {
@@ -102,18 +150,22 @@ function checkAccelerationTwo() {
         // sqrt((xf - x0 - v0t)/(1/2*a)) = t
         answerBox.innerHTML = Math.sqrt((valueDict["pos-final-two"] - valueDict["pos-init-two"] - (valueDict["vel-init-two"] * valueDict["time-two"])) / (1 / 2 * valueDict["accel-two"])).toFixed(3) + " s"
         answerBegin.innerHTML = "Time is"
+        styleCorrectEquation(equations[4])
     }
     // if the var to find is acceleration
     else if (missingVar == "accel-two") {
         // (xf - x0 - v0t)/(1/2t^2) = a
         answerBox.innerHTML = ((valueDict["pos-final-two"] - valueDict["pos-init-two"] - valueDict["vel-init-two"] * valueDict["time-two"]) / (1 / 2 * Math.pow(valueDict["time-two"], 2))).toFixed(3) + " m/s^2"
         answerBegin.innerHTML = "Acceleration is"
+        styleCorrectEquation(equations[3])
+
     }
     // if the var to find is initial velocity
     else if (missingVar == "vel-init-two") {
         // (xf-x0-(1/2*a*t^2))/t = v0
         answerBox.innerHTML = ((valueDict["pos-final-two"] - valueDict["pos-init-two"] - (1 / 2 * valueDict["accel-two"] * Math.pow(valueDict["time-two"], 2))) / valueDict["time-two"]).toFixed(2) + " m/s"
         answerBegin.innerHTML = "Initial Velocity is"
+        styleCorrectEquation(equations[2])
 
     }
     // if the var to find is final position
@@ -121,12 +173,16 @@ function checkAccelerationTwo() {
         // (x0 + v0*t + (1/2*a*t^2)) = xf
         answerBox.innerHTML = ((valueDict["pos-init-two"] + valueDict["vel-init-two"] * valueDict["time-two"] + (1 / 2 * valueDict["accel-two"] * Math.pow(valueDict["time-two"], 2)))).toFixed(3) + " m"
         answerBegin.innerHTML = "Final Position is"
+        styleCorrectEquation(equations[0])
+
     }
     // if the var to find is initial position
     else if (missingVar == "pos-init-two") {
         // (xf-v0*t-(1/2*a*t^2)) = x0
         answerBox.innerHTML = ((valueDict["pos-final-two"] - valueDict["vel-init-two"] * valueDict["time-two"] - (1 / 2 * valueDict["accel-two"] * Math.pow(valueDict["time-two"], 2)))).toFixed(3) + " m"
         answerBegin.innerHTML = "Initial Position is"
+        styleCorrectEquation(equations[1])
+
     }
 }
 
@@ -135,7 +191,16 @@ function checkAccelerationThree() {
     let answerBox = document.querySelector("#accel-three-answer")
     let answerBegin = document.querySelector("#accel-three-equation-beginning")
 
-    let valueDict = { "vel-final-three": 0, "vel-init-three": 0, "pos-three": 0, "accel-three": 0 }
+    let valueDict = { "vel-final": 0, "vel-init": 0, "pos": 0, "accel": 0 }
+
+    let equations = document.querySelectorAll(".constant-accel-three")
+
+    // keeps track of which variable relates to which equation index
+    let equationDict = { "vel-final": 0, "vel-init": 1, "accel": 2, "pos": 3 }
+
+    // sets the equations styles back to normal
+    resetEquations(equations)
+
 
     let numOfInputs = 0
     let missingVar = ""
@@ -149,7 +214,10 @@ function checkAccelerationThree() {
             if (input.name in valueDict) {
                 // sets the dictionary equivalent to the name to the input value
                 valueDict[input.name] = parseFloat(input.value)
-                document.getElementsByName(input.name)[0].style.color = "#FF0000";
+                    //document.getElementsByName(input.name)[0].style.color = "#FF0000";
+                input.style.color = "#2466f2";
+                styleIncorrectEquation(equations[equationDict[input.name]])
+
             }
 
         } else {
@@ -161,29 +229,35 @@ function checkAccelerationThree() {
     }
 
     // if the var to find is time
-    if (missingVar == "vel-final-three") {
+    if (missingVar == "vel-final") {
         // math.sqrt(v_0^2 + 2 * a * x)
-        answerBox.innerHTML = Math.sqrt(Math.pow(valueDict["vel-init-three"], 2) + 2 * valueDict["accel-three"] * valueDict["pos-three"]).toFixed(3) + " m/s"
+        answerBox.innerHTML = Math.sqrt(Math.pow(valueDict["vel-init"], 2) + 2 * valueDict["accel"] * valueDict["pos"]).toFixed(3) + " m/s"
         answerBegin.innerHTML = "Final Velocity is"
+        styleCorrectEquation(equations[0])
     }
     // if the var to find is acceleration
-    else if (missingVar == "vel-init-three") {
+    else if (missingVar == "vel-init") {
         // sqrt(v^2_f - 2*a*x) = v_0
-        answerBox.innerHTML = Math.sqrt(Math.pow(valueDict["vel-final-three"], 2) - 2 * valueDict["accel-three"] * valueDict["pos-three"]).toFixed(3) + " m/s"
+        answerBox.innerHTML = Math.sqrt(Math.pow(valueDict["vel-final"], 2) - 2 * valueDict["accel"] * valueDict["pos"]).toFixed(3) + " m/s"
         answerBegin.innerHTML = "Initial Velocity is"
+        styleCorrectEquation(equations[1])
+
     }
     // if the var to find is initial velocity
-    else if (missingVar == "pos-three") {
+    else if (missingVar == "pos") {
         // (v^2_f - v_0^2)/2a
-        answerBox.innerHTML = ((Math.pow(valueDict["vel-final-three"], 2) - Math.pow(valueDict["vel-init-three"], 2)) / (2 * valueDict["accel-three"])).toFixed(3) + " m"
+        answerBox.innerHTML = ((Math.pow(valueDict["vel-final"], 2) - Math.pow(valueDict["vel-init"], 2)) / (2 * valueDict["accel"])).toFixed(3) + " m"
         answerBegin.innerHTML = "Position is"
+        styleCorrectEquation(equations[3])
 
     }
     // if the var to find is final position
-    else if (missingVar == "accel-three") {
+    else if (missingVar == "accel") {
         // (v^2_f - v_0^2)/2x
-        answerBox.innerHTML = ((Math.pow(valueDict["vel-final-three"], 2) - Math.pow(valueDict["vel-init-three"], 2)) / (2 * valueDict["pos-three"])).toFixed(3) + " m/s^2"
+        answerBox.innerHTML = ((Math.pow(valueDict["vel-final"], 2) - Math.pow(valueDict["vel-init"], 2)) / (2 * valueDict["pos"])).toFixed(3) + " m/s^2"
         answerBegin.innerHTML = "Acceleration is"
+        styleCorrectEquation(equations[2])
+
     }
 }
 

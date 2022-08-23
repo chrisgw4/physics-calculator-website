@@ -61,12 +61,17 @@
     <div class="equation" id="vector-equations">
         <p id="type-equation">Constant Acceleration:</p>
         <p id="equation-for"><u>Kinematic Equations</u></p>
-        <p id="equation">$$v_f = v_0 + at $$</p>
+        <p class="constant-accel-one" id="equation" name="original">Original : $v_f = v_0 + at $</p>
+        <p class="constant-accel-one" id="equation" name="initial-vel">Find Initial Velocity : $v_f = v_0 + at $</p>
+        <p class="constant-accel-one" id="equation" name="accel">Find Acceleration : $ a = \frac{v_f - v_0} {t}$ </p>
+        <p class="constant-accel-one" id="equation" name="time">Find Time : $t = \frac{v_f - v_0} {a}$ </p>
+
+
         <div class="equation-input">
-            <p id="vel-final">$v_f =$ <input type="text" class="accel-one" name="vel-final" id="num-input" maxlength="8" placeholder="Final Velocity"> (ending velocity)</p>
-            <p id="vel-init">$v_0 =$ <input type="text" class="accel-one" name="vel-init" id="num-input" maxlength="8" placeholder="Initial Velocity"> (starting velocity)</p>
-            <p id="accel">$a =$ <input type="text" class="accel-one" name="accel" id="num-input" maxlength="8" placeholder="Acceleration"> (Acceleration)</p>
-            <p id="time">$\Delta t =$ <input type="text" class="accel-one" name="time" id="num-input" maxlength="8" placeholder="Time"> (Time)</p>
+            <p class="input-line" id="vel-final">$v_f =$ <input type="text" class="accel-one" name="vel-final" id="num-input" maxlength="8" placeholder="Final Velocity"> (ending velocity)</p>
+            <p class="input-line" id="vel-init">$v_0 =$ <input type="text" class="accel-one" name="vel-init" id="num-input" maxlength="8" placeholder="Initial Velocity"> (starting velocity)</p>
+            <p class="input-line" id="accel">$a =$ <input type="text" class="accel-one" name="accel" id="num-input" maxlength="8" placeholder="Acceleration"> (Acceleration)</p>
+            <p class="input-line" id="time">$\Delta t =$ <input type="text" class="accel-one" name="time" id="num-input" maxlength="8" placeholder="Time"> (Time)</p>
             <div id="answer">
                 <span id="accel-one-equation-beginning">${}$</span>
                 <span id="accel-one-answer"></span>
@@ -74,13 +79,18 @@
         </div>
     </div>
     <div class="equation" id="vector-equations">
-        <p id="equation">$$x_f=x_0+v_0t+\frac{1}{2}at^2$$</p>
+        <p class="constant-accel-two" id="equation" name="original">Orignal : $x_f=x_0+v_0t+\frac{1}{2}at^2$</p>
+        <p class="constant-accel-two" id="equation" name="pos-init">Find Initial Position : $x_0 = x_f-v_0t-(\frac{1}{2}at^2)$</p>
+        <p class="constant-accel-two" id="equation" name="vel-init">Find Initial Velocity : $v_0 = \frac{x_f-x_0-(\frac{1}{2}*a*t^2)}{t}$</p>
+        <p class="constant-accel-two" id="equation" name="accel">Find Acceleration : $a= \frac{x_f-x_0-v_0t}{\frac{1}{2}t^2}$</p>
+        <p class="constant-accel-two" id="equation" name="time">Find Time : $t= \frac{\sqrt{x_f-x_0-v_0t}}{\frac{1}{2}a}$</p>
+
         <div class="equation-input">
-            <p id="pos-final">$x_f =$ <input type="text" class="accel-two" name="pos-final-two" id="num-input" maxlength="8" placeholder="Final Position"> (ending position)</p>
-            <p id="pos-init">$x_0 =$ <input type="text" class="accel-two" name="pos-init-two" id="num-input" maxlength="8" placeholder="Initial Position"> (starting position)</p>
-            <p id="vel-init">$v_0 =$ <input type="text" class="accel-two" name="vel-init-two" id="num-input" maxlength="8" placeholder="Initial Velocity"> (starting velocity)</p>
-            <p id="accel">$a =$ <input type="text" class="accel-two" name="accel-two" id="num-input" maxlength="8" placeholder="Acceleration"> (Acceleration)</p>
-            <p id="time">$t =$ <input type="text" class="accel-two" name="time-two" id="num-input" maxlength="8" placeholder="Time"> (Time)</p>
+            <p class="input-line" id="pos-final">$x_f =$ <input type="text" class="accel-two" name="pos-final-two" id="num-input" maxlength="8" placeholder="Final Position"> (ending position)</p>
+            <p class="input-line" id="pos-init">$x_0 =$ <input type="text" class="accel-two" name="pos-init-two" id="num-input" maxlength="8" placeholder="Initial Position"> (starting position)</p>
+            <p class="input-line" id="vel-init">$v_0 =$ <input type="text" class="accel-two" name="vel-init-two" id="num-input" maxlength="8" placeholder="Initial Velocity"> (starting velocity)</p>
+            <p class="input-line" id="accel">$a =$ <input type="text" class="accel-two" name="accel-two" id="num-input" maxlength="8" placeholder="Acceleration"> (Acceleration)</p>
+            <p class="input-line" id="time">$t =$ <input type="text" class="accel-two" name="time-two" id="num-input" maxlength="8" placeholder="Time"> (Time)</p>
             <div id="answer">
                 <span id="accel-two-equation-beginning">${}$</span>
                 <span id="accel-two-answer"></span>
@@ -88,12 +98,42 @@
         </div>
     </div>
     <div class="equation" id="vector-equations">
-        <p id="equation">$$v_{f}^{2} = v_{0}^{2} + 2a\Delta{x}$$</p>
+        <p class="constant-accel-three" id="equation" name="original">Original : $v_{f}^{2} = v_{0}^{2} + 2a\Delta{x}$</p>
+        <p class="constant-accel-three" id="equation" name="original">Find Initial Velocity : $v_0 = \sqrt{v^{2}_{f}-2a\Delta{x}}$</p>
+        <p class="constant-accel-three" id="equation" name="original">Find Acceleration : $a = \frac{v^{2}_{f}-v^{2}_{0}}{2 \Delta x}$</p>
+        <p class="constant-accel-three" id="equation" name="original">Find $\Delta x$ : $\Delta x = \frac{v^{2}_{f}-v^{2}_{0}}{2a}$</p>
+
         <div class="equation-input">
-            <p id="vel-final">$v_f =$ <input type="text" class="accel-three" name="vel-final-three" id="num-input" maxlength="8" placeholder="Final Velocity"> (ending velocity)</p>
-            <p id="vel-init">$v_0 =$ <input type="text" class="accel-three" name="vel-init-three" id="num-input" maxlength="8" placeholder="Initial Velocity"> (starting velocity)</p>
-            <p id="accel">$a =$ <input type="text" class="accel-three" name="accel-three" id="num-input" maxlength="8" placeholder="Acceleration"> (Acceleration)</p>
-            <p id="pos">$\Delta x =$ <input type="text" class="accel-three" name="pos-three" id="num-input" maxlength="8" placeholder="Delta x"> (change in position)</p>
+            <p class="input-line" id="vel-final">$v_f =$ <input type="text" class="accel-three" name="vel-final" id="num-input" maxlength="8" placeholder="Final Velocity"> (ending velocity)</p>
+            <p class="input-line" id="vel-init">$v_0 =$ <input type="text" class="accel-three" name="vel-init" id="num-input" maxlength="8" placeholder="Initial Velocity"> (starting velocity)</p>
+            <p class="input-line" id="accel">$a =$
+                <input type="text" class="accel-three" name="accel" id="num-input" maxlength="8" placeholder="Acceleration">
+                <select name="pos-units" class="accel-three-units" id="unit-select" aria-placeholder="po">
+                    <option value="km">kilometers</option>
+                    <option value="m">meters</option>
+                    <option value="cm">centimeters</option>
+                    <option value="mm">millimeters</option>
+                </select> /
+                <select name="pos-units" class="accel-three-units" id="unit-select">
+                    <option value="s">s^2</option>
+                    <option value="minutes">min^2</option>
+                    <option value="hour">hour^2</option>
+                    <option value="day">day^2</option>
+                </select>
+                <span>(Acceleration)</span>
+            </p>
+
+            <p id="pos">$\Delta x =$
+
+                <input type="text" class="accel-three" name="pos" id="num-input" maxlength="8" placeholder="Delta x">
+                <select name="pos-units" class="accel-three-units" id="unit-select">
+                    <option value="km">kilometers</option>
+                    <option value="m">meters</option>
+                    <option value="cm">centimeters</option>
+                    <option value="mm">millimeters</option>
+                </select>
+                <span>(change in position)</span>
+            </p>
             <div id="answer">
                 <span id="accel-three-equation-beginning">${}$</span>
                 <span id="accel-three-answer"></span>
