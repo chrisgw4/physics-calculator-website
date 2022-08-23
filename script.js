@@ -175,7 +175,7 @@ function checkAccelerationThree() {
     // if the var to find is initial velocity
     else if (missingVar == "pos-three") {
         // (v^2_f - v_0^2)/2a
-        answerBox.innerHTML = ((Math.pow(valueDict["vel-final-three"], 2) - Math.pow(valueDict["vel-init-three"], 2) / (2 * valueDict["accel-three"])).toFixed(3) + " m"
+        answerBox.innerHTML = ((Math.pow(valueDict["vel-final-three"], 2) - Math.pow(valueDict["vel-init-three"], 2)) / (2 * valueDict["accel-three"])).toFixed(3) + " m"
         answerBegin.innerHTML = "Position is"
 
     }
