@@ -148,7 +148,7 @@ function checkAccelerationTwo() {
     // if the var to find is time
     if (missingVar == "time") {
         // sqrt((xf - x0 - v0t)/(1/2*a)) = t
-        answerBox.innerHTML = (-valueDict["vel-init"] + (Math.sqrt(Math.pow(valueDict["vel-init"],2)+(2*valueDict["accel"]*(valueDict["pos-final"]-valueDict["pos-init"]))))/valueDict["accel"].toFixed(3) + " s"   //Math.sqrt((valueDict["pos-final"] - valueDict["pos-init"] - (valueDict["vel-init"] * valueDict["time"])) / (1 / 2 * valueDict["accel"])).toFixed(3) + " s"
+        answerBox.innerHTML = (-valueDict["vel-init"] + Math.sqrt(Math.pow(valueDict["vel-init"],2)+2*valueDict["accel"]*(valueDict["pos-final"]-valueDict["pos-init"]))/valueDict["accel"].toFixed(3) + " s"   //Math.sqrt((valueDict["pos-final"] - valueDict["pos-init"] - (valueDict["vel-init"] * valueDict["time"])) / (1 / 2 * valueDict["accel"])).toFixed(3) + " s"
         answerBegin.innerHTML = "Time is"
         styleCorrectEquation(equations[4])
     }
