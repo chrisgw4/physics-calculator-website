@@ -147,15 +147,15 @@ function checkAccelerationTwo() {
 
     // if the var to find is time
     if (missingVar == "time") {
-        // sqrt((xf - x0 - v0t)/(1/2*a)) = t
-        answerBox.innerHTML = ( (valueDict["vel-init"] + Math.sqrt(Math.pow(valueDict["vel-init"],2)+2*valueDict["accel"]*(valueDict["pos-final"]-valueDict["pos-init"])))/valueDict["accel"] ).toFixed(3) + " s"   //Math.sqrt((valueDict["pos-final"] - valueDict["pos-init"] - (valueDict["vel-init"] * valueDict["time"])) / (1 / 2 * valueDict["accel"])).toFixed(3) + " s"
+        //  (v0 - sqrt(v0^2 + 2*a*Delta x))/a       sqrt((xf - x0 - v0t)/(1/2*a)) = t 
+        answerBox.innerHTML = ((valueDict["vel-init"] + Math.sqrt(Math.pow(valueDict["vel-init"], 2) + 2 * valueDict["accel"] * (valueDict["pos-final"] - valueDict["pos-init"]))) / valueDict["accel"]).toFixed(3) + " s" //Math.sqrt((valueDict["pos-final"] - valueDict["pos-init"] - (valueDict["vel-init"] * valueDict["time"])) / (1 / 2 * valueDict["accel"])).toFixed(3) + " s"
         answerBegin.innerHTML = "Time is"
         styleCorrectEquation(equations[4])
     }
     // if the var to find is acceleration
     else if (missingVar == "accel") {
         // (xf - x0 - v0t)/(1/2t^2) = a
-        answerBox.innerHTML = ((valueDict["pos-final"] - valueDict["pos-init"] - valueDict["vel-init"] * valueDict["time"]) / (1 / 2 * Math.pow(valueDict["time"], 2))).toFixed(3) + " m/s^2"
+        answerBox.innerHTML = (2 * (valueDict["pos-final"] - valueDict["pos-init"] - valueDict["vel-init"] * valueDict["time"]) / (Math.pow(valueDict["time"], 2))).toFixed(3) + " m/s^2"
         answerBegin.innerHTML = "Acceleration is"
         styleCorrectEquation(equations[3])
 
@@ -263,6 +263,6 @@ function checkAccelerationThree() {
 
 
 
-setInterval(checkAccelerationOne, 500);
-setInterval(checkAccelerationTwo, 500);
-setInterval(checkAccelerationThree, 500);
+setInterval(checkAccelerationOne, 100);
+setInterval(checkAccelerationTwo, 100);
+setInterval(checkAccelerationThree, 100);
