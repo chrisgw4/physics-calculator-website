@@ -26,6 +26,28 @@ function styleIncorrectEquation(equation) {
     equation.style.opacity = "0.5"
 }
 
+function convertLengthUnits(value, unit) {
+
+
+    // converts the input number into meters
+    if (unit === "km") {
+        // convert from kilometers into meters for the math
+        return value * 1000
+    }
+    if (unit === "m") {
+        return value
+    }
+    if (unit === "cm") {
+        // convert from centimeters into meters for the math
+        return value / 100
+    }
+    if (unit === "mm") {
+        // convert from millimeters into meters for the math
+        return value / 1000
+    }
+
+}
+
 function checkAccelerationOne() {
 
     let answerBox = document.querySelector("#accel-one-answer")
@@ -55,6 +77,24 @@ function checkAccelerationOne() {
                 // sets the dictionary equivalent to the name to the input value
                 valueDict[input.name] = parseFloat(input.value)
                     //document.getElementsByName(input.name)[0].style.color = "#2466f2";
+                if (input.name === "vel-final") {
+                    let accelUnits = document.querySelectorAll(".accel-one-units")[0]
+
+                    // converts the input number into meters
+                    valueDict[input.name] = convertLengthUnits(valueDict[input.name], accelUnits.options[accelUnits.selectedIndex].value)
+                }
+                if (input.name === "vel-init") {
+                    let accelUnits = document.querySelectorAll(".accel-one-units")[2]
+
+                    // converts the input number into meters
+                    valueDict[input.name] = convertLengthUnits(valueDict[input.name], accelUnits.options[accelUnits.selectedIndex].value)
+                }
+                if (input.name === "accel") {
+                    let accelUnits = document.querySelectorAll(".accel-one-units")[4]
+
+                    // converts the input number into meters
+                    valueDict[input.name] = convertLengthUnits(valueDict[input.name], accelUnits.options[accelUnits.selectedIndex].value)
+                }
 
                 input.style.color = "#2466f2";
                 styleIncorrectEquation(equations[equationDict[input.name]])
@@ -214,7 +254,20 @@ function checkAccelerationThree() {
             if (input.name in valueDict) {
                 // sets the dictionary equivalent to the name to the input value
                 valueDict[input.name] = parseFloat(input.value)
-                    //document.getElementsByName(input.name)[0].style.color = "#FF0000";
+
+                if (input.name === "accel") {
+                    let accelUnits = document.querySelectorAll(".accel-three-units")[0]
+
+
+                    if (accelUnits.options[accelUnits.selectedIndex].value == "km") {
+                        // convert from kilometers into meters for the math
+                        valueDict[input.name] = valueDict[input.name] / 1000
+                        console.log(valueDict[input.name])
+                    }
+
+                }
+
+                //document.getElementsByName(input.name)[0].style.color = "#FF0000";
                 input.style.color = "#2466f2";
                 styleIncorrectEquation(equations[equationDict[input.name]])
 

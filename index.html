@@ -68,9 +68,48 @@
 
 
         <div class="equation-input">
-            <p class="input-line" id="vel-final">$v_f =$ <input type="text" class="accel-one" name="vel-final" id="num-input" maxlength="8" placeholder="Final Velocity"> (ending velocity)</p>
-            <p class="input-line" id="vel-init">$v_0 =$ <input type="text" class="accel-one" name="vel-init" id="num-input" maxlength="8" placeholder="Initial Velocity"> (starting velocity)</p>
-            <p class="input-line" id="accel">$a =$ <input type="text" class="accel-one" name="accel" id="num-input" maxlength="8" placeholder="Acceleration"> (Acceleration)</p>
+            <p class="input-line" id="vel-final">$v_f =$ <input type="text" class="accel-one" name="vel-final" id="num-input" maxlength="8" placeholder="Final Velocity">
+                <select name="init-vel-units" class="accel-one-units" id="unit-select">
+                    <option value="km">kilometers</option>
+                    <option value="m">meters</option>
+                    <option value="cm">centimeters</option>
+                    <option value="mm">millimeters</option>
+                </select> /
+                <select name="final-vel-time-units" class="accel-one-units" id="unit-select">
+                    <option value="s">s</option>
+                    <option value="minutes">min</option>
+                    <option value="hour">hour</option>
+                    <option value="day">day</option>
+                </select> (ending velocity)
+            </p>
+            <p class="input-line" id="vel-init">$v_0 =$ <input type="text" class="accel-one" name="vel-init" id="num-input" maxlength="8" placeholder="Initial Velocity">
+                <select name="init-vel-units" class="accel-one-units" id="unit-select">
+                    <option value="km">kilometers</option>
+                    <option value="m">meters</option>
+                    <option value="cm">centimeters</option>
+                    <option value="mm">millimeters</option>
+                </select> /
+                <select name="init-vel-time-units" class="accel-one-units" id="unit-select">
+                    <option value="s">s</option>
+                    <option value="minutes">min</option>
+                    <option value="hour">hour</option>
+                    <option value="day">day</option>
+                </select> (starting velocity)
+            </p>
+            <p class="input-line" id="accel">$a =$ <input type="text" class="accel-one" name="accel" id="num-input" maxlength="8" placeholder="Acceleration">
+                <select name="accel-units" class="accel-one-units" id="unit-select">
+                    <option value="km">kilometers</option>
+                    <option value="m">meters</option>
+                    <option value="cm">centimeters</option>
+                    <option value="mm">millimeters</option>
+                </select> /
+                <select name="accel-time-units" class="accel-one-units" id="unit-select">
+                    <option value="s">s^2</option>
+                    <option value="minutes">min^2</option>
+                    <option value="hour">hour^2</option>
+                    <option value="day">day^2</option>
+                </select> (Acceleration)
+            </p>
             <p class="input-line" id="time">$\Delta t =$ <input type="text" class="accel-one" name="time" id="num-input" maxlength="8" placeholder="Time"> (Time)</p>
             <div id="answer">
                 <span id="accel-one-equation-beginning">${}$</span>
@@ -108,13 +147,13 @@
             <p class="input-line" id="vel-init">$v_0 =$ <input type="text" class="accel-three" name="vel-init" id="num-input" maxlength="8" placeholder="Initial Velocity"> (starting velocity)</p>
             <p class="input-line" id="accel">$a =$
                 <input type="text" class="accel-three" name="accel" id="num-input" maxlength="8" placeholder="Acceleration">
-                <select name="pos-units" class="accel-three-units" id="unit-select" aria-placeholder="po">
+                <select name="accel-units" class="accel-three-units" id="unit-select">
                     <option value="km">kilometers</option>
                     <option value="m">meters</option>
                     <option value="cm">centimeters</option>
                     <option value="mm">millimeters</option>
                 </select> /
-                <select name="pos-units" class="accel-three-units" id="unit-select">
+                <select name="accel-time-units" class="accel-three-units" id="unit-select">
                     <option value="s">s^2</option>
                     <option value="minutes">min^2</option>
                     <option value="hour">hour^2</option>
