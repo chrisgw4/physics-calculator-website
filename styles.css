@@ -34,7 +34,7 @@ body {
     padding-left: 50px;
     padding-bottom: 15px;
     font-size: larger;
-    transition: 0.5s ease-in-out;
+    transition: 0.45s ease-in-out;
 }
 
 #no-equation {
@@ -57,11 +57,23 @@ body {
 
 #num-input {
     width: 100px;
+    height: 20;
     text-align: left;
     padding-left: 3px;
     border-radius: 10px;
     border-color: rgb(99, 99, 99);
     border-style: solid;
+    transition: 0.25s ease-in-out;
+}
+
+#num-input:hover {
+    border-color: rgb(218, 0, 0);
+    border-style: solid;
+    width: 120px;
+    height: 25px;
+    padding-left: 5px;
+    padding-top: 0px;
+    font-size: large;
 }
 
 #output {
@@ -74,6 +86,15 @@ body {
     color: blueviolet;
     padding-top: 10px;
     font-weight: 600;
+    transition: 0.2s ease-out;
+}
+
+#answer:hover {
+    padding: auto;
+    color: rgb(155, 38, 234);
+    padding-top: 10px;
+    font-weight: 600;
+    font-size: x-large;
 }
 
 mjx-container {
