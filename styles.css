@@ -66,7 +66,8 @@ body {
     transition: 0.25s ease-in-out;
 }
 
-#num-input:hover {
+
+/* #num-input:hover {
     border-color: rgb(218, 0, 0);
     border-style: solid;
     width: 120px;
@@ -74,7 +75,7 @@ body {
     padding-left: 5px;
     padding-top: 0px;
     font-size: large;
-}
+} */
 
 #output {
     border-radius: 20px;
