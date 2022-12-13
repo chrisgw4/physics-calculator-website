@@ -2,6 +2,10 @@ const accelOne = document.querySelectorAll(".accel-one")
 const accelTwo = document.querySelectorAll(".accel-two")
 const accelThree = document.querySelectorAll(".accel-three")
 
+const momentum = document.querySelectorAll(".momentum")
+const impulse = document.querySelectorAll(".impulse")
+const elasticCol = document.querySelectorAll(".elastic-col")
+
 // sec -> min -> hours -> days -> years
 const secDict = { "sec": 0 }
 
@@ -277,6 +281,7 @@ function checkAccelerationThree() {
             missingVar = input.name
         }
     }
+    // if the num of inputs is less than the number then there isnt enough data to get an answer
     if (numOfInputs < 3) {
         return
     }
@@ -319,3 +324,159 @@ function checkAccelerationThree() {
 setInterval(checkAccelerationOne, 100);
 setInterval(checkAccelerationTwo, 100);
 setInterval(checkAccelerationThree, 100);
+
+
+function checkMomentum() {
+
+    let answerBox = document.querySelector("#momentum-answer");
+    let answerBegin = document.querySelector("#momentum-equation-beginning");
+
+    let valueDict = { "p": 0, "mass": 0, "vel": 0 };
+
+    let equations = document.querySelectorAll(".momentum-eq");
+
+    // keeps track of which variable relates to which equation index
+    let equationDict = { "p": 0, "mass": 1, "vel": 2 };
+
+    resetEquations(equations)
+
+    let numOfInputs = 0
+    let missingVar = ""
+    for (input of momentum) {
+        if (input.value) {
+            if (isNaN(input.value)) {
+                return;
+            }
+            numOfInputs++;
+            if ((input.name in valueDict)) {
+
+
+
+                // adds the value from the input after converting it from string to float and adding it to the respective part of the dictionary
+                valueDict[input.name] = parseFloat(input.value)
+
+                input.style.color = "#2466f2";
+
+                styleIncorrectEquation(equations[equationDict[input.name]])
+
+            }
+        } else {
+            missingVar = input.name
+        }
+    }
+    if (numOfInputs < 2) {
+        return
+    }
+
+    if (missingVar === "p") {
+        // p = m*v
+        answerBox.innerHTML = (valueDict["mass"] * valueDict["vel"]).toFixed(3) + " (kg*m)/s"
+        answerBegin.innerHTML = "Momentum is"
+        styleCorrectEquation(equations[0])
+
+    } else if (missingVar === "mass") {
+        // m = p/v
+        answerBox.innerHTML = (valueDict["p"] / valueDict["vel"]).toFixed(3) + " kg"
+        answerBegin.innerHTML = "Mass is"
+        styleCorrectEquation(equations[1])
+
+    } else if (missingVar === "vel") {
+        // v = p/m
+        answerBox.innerHTML = (valueDict["p"] / valueDict["mass"]).toFixed(3) + " m/s"
+        answerBegin.innerHTML = "Velocity is"
+        styleCorrectEquation(equations[1])
+
+    }
+}
+
+function checkImpulse() {
+
+    let answerBox = document.querySelector("#impulse-answer");
+    let answerBegin = document.querySelector("#impulse-equation-beginning");
+
+    let valueDict = { "change-p": 0, "avg-force": 0, "time": 0 };
+
+    let equations = document.querySelectorAll(".impulse-eq");
+
+    // keeps track of which variable relates to which equation index
+    let equationDict = { "change-p": 0, "avg-force": 1, "time": 2 };
+
+    resetEquations(equations)
+
+    let numOfInputs = 0
+    let missingVar = ""
+
+    for (input of impulse) {
+        if (input.value) {
+
+            if (isNaN(input.value))
+                return;
+
+            numOfInputs++;
+
+            if (!(input.name in valueDict))
+                return;
+
+            // adds the value from the input after converting it from string to float and adding it to the respective part of the dictionary
+            valueDict[input.name] = parseFloat(input.value)
+
+            input.style.color = "#2466f2";
+
+            styleIncorrectEquation(equations[equationDict[input.name]])
+
+        } else {
+            missingVar = input.name
+        }
+    }
+
+    if (numOfInputs < 2)
+        return;
+
+
+    if (missingVar === "change-p") {
+        // ∆p = F_avg * ∆t
+        answerBox.innerHTML = (valueDict["avg-force"] * valueDict["time"]).toFixed(3) + " (kg*m)/s"
+        answerBegin.innerHTML = "Impulse is"
+        styleCorrectEquation(equations[0])
+
+    } else if (missingVar === "avg-force") {
+        // F_avg = ∆p/∆t
+        answerBox.innerHTML = (valueDict["change-p"] / valueDict["time"]).toFixed(3) + " N"
+        answerBegin.innerHTML = "Average Force is"
+        styleCorrectEquation(equations[1])
+
+    } else if (missingVar === "time") {
+        // ∆t = ∆p/F_avg
+        answerBox.innerHTML = (valueDict["change-p"] / valueDict["avg-force"]).toFixed(3) + " s"
+        answerBegin.innerHTML = "Time is"
+        styleCorrectEquation(equations[2])
+
+    }
+}
+
+
+function checkElasticCollision() {
+
+    // get answer box to show the answer under the inputs
+    let answerBox = document.querySelector("#elastic-col-answer");
+
+    // gets the answe box before the answer to say WHAT the answer is (not a number)
+    let answerBegin = document.querySelector("#elastic-col-equation-beginning");
+
+    // keeps track of which variables have what number input
+    let valueDict = { "change-p": 0, "avg-force": 0, "time": 0 };
+
+
+    let equations = document.querySelectorAll(".impulse-eq");
+
+    // keeps track of which variable relates to which equation index
+    let equationDict = { "change-p": 0, "avg-force": 1, "time": 2 };
+
+    resetEquations(equations)
+
+    let numOfInputs = 0
+    let missingVar = ""
+}
+
+setInterval(checkMomentum, 100);
+setInterval(checkImpulse, 100);

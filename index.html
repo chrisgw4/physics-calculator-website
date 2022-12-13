@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 
-<body>
+<>
     <script>
         MathJax = {
             tex: {
@@ -138,9 +138,9 @@
     </div>
     <div class="equation" id="vector-equations">
         <p class="constant-accel-three" id="equation" name="original">Original : $v_{f}^{2} = v_{0}^{2} + 2a\Delta{x}$</p>
-        <p class="constant-accel-three" id="equation" name="original">Find Initial Velocity : $v_0 = \sqrt{v^{2}_{f}-2a\Delta{x}}$</p>
-        <p class="constant-accel-three" id="equation" name="original">Find Acceleration : $a = \frac{v^{2}_{f}-v^{2}_{0}}{2 \Delta x}$</p>
-        <p class="constant-accel-three" id="equation" name="original">Find $\Delta x$ : $\Delta x = \frac{v^{2}_{f}-v^{2}_{0}}{2a}$</p>
+        <p class="constant-accel-three" id="equation" name="vel-init">Find Initial Velocity : $v_0 = \sqrt{v^{2}_{f}-2a\Delta{x}}$</p>
+        <p class="constant-accel-three" id="equation" name="accel">Find Acceleration : $a = \frac{v^{2}_{f}-v^{2}_{0}}{2 \Delta x}$</p>
+        <p class="constant-accel-three" id="equation" name="change-x">Find $\Delta x$ : $\Delta x = \frac{v^{2}_{f}-v^{2}_{0}}{2a}$</p>
 
         <div class="equation-input">
             <p class="input-line" id="vel-final">$v_f =$ <input type="text" class="accel-three" name="vel-final" id="num-input" maxlength="8" placeholder="Final Velocity"> (ending velocity)</p>
@@ -179,8 +179,77 @@
             </div>
         </div>
     </div>
+
+    <div class="equation" id="vector-equations">
+        <p id="type-equation">Momentum Equations</p>
+        <p id="equation-for"><u>Momentum</u></p>
+        <p class="momentum-eq" id="equation" name="original">Original : $p = mv$</p>
+        <p class="momentum-eq" id="equation" name="find-mass">Find Mass : $m = \frac{p}{v}$</p>
+        <p class="momentum-eq" id="equation" name="find-vel">Find Velocity : $v = \frac{p}{m}$</p>
+
+        <div class="equation-input">
+            <p class="input-line" id="momentum">$p =$
+                <input class="momentum" type="text" name="p" id="num-input" maxlength="8" placeholder="Momentum">
+            </p>
+            <p class="input-line" id="mass">$m =$
+                <input class="momentum" type="text" name="mass" id="num-input" maxlength="8" placeholder="Mass">
+            </p>
+            <p class="input-line" id="vel">$v =$
+                <input class="momentum" type="text" name="vel" id="num-input" maxlength="8" placeholder="Velocity">
+            </p>
+
+            <div id="answer">
+                <span id="momentum-equation-beginning">${}$</span>
+                <span id="momentum-answer"></span>
+            </div>
+        </div>
+
+        <p id="equation-for"><u>Impulse</u></p>
+        <p class="impulse-eq" id="equation" name="original">Original : $∆p = F_{avg}\Delta{t}$</p>
+        <p class="impulse-eq" id="equation" name="avg-force">Find Average Force : $F_{avg} = \frac{∆p}{\Delta{t}}$</p>
+        <p class="impulse-eq" id="equation" name="time">Find Time : $\Delta t = \frac{∆p}{{F_{avg}}}$</p>
+
+
+        <div class="equation-input">
+            <p class="input-line" id="∆p">$\Delta p =$
+                <input type="text" class="impulse" name="change-p" id="num-input" maxlength="8" placeholder="∆p"> (change in momentum)
+            </p>
+            <p class="input-line" id="force-avg">$F_{avg} =$
+                <input type="text" class="impulse" name="avg-force" id="num-input" maxlength="8" placeholder="Avg Force">
+            </p>
+            <p class="input-line" id="time">$∆t =$
+                <input type="text" class="impulse" name="time" id="num-input" maxlength="8" placeholder="Time">
+            </p>
+
+
+            <div id="answer">
+                <span id="impulse-equation-beginning">${}$</span>
+                <span id="impulse-answer"></span>
+            </div>
+        </div>
+
+
+        <p id="equation-for"><u>Elastic Collision</u></p>
+        <p class="elastic-col" id="equation" name="original">Kinetic Conserved : $\sum{\frac{1}{2}mv_{before}^{^{2}}} = \sum{\frac{1}{2}mv_{after}^{^{2}}}$</p>
+        <div class="equation-input">
+            <p class="input-line" id="mass-one">$m =$
+                <input type="text" class="elastic-col" name="mass-one" id="num-input" maxlength="8" placeholder="First Mass">
+            </p>
+            <p class="input-line" id="vel-init">$v_0 =$
+                <input type="text" class="elastic-col" name="vel-init" id="num-input" maxlength="8" placeholder="Initial Velocity"> (starting velocity)
+            </p>
+            <p class="input-line" id="vel-final">$v_f =$
+                <input type="text" class="elastic-col" name="vel-final" id="num-input" maxlength="8" placeholder="Final Velocity"> (ending velocity)
+            </p>
+
+            <div id="answer">
+                <span id="elastic-col-equation-beginning">${}$</span>
+                <span id="elastic-col-answer"></span>
+            </div>
+        </div>
+    </div>
     <script src="script.js"></script>
 
-</body>
+    </body>
 
 </html>
